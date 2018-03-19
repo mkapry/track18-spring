@@ -10,32 +10,45 @@ import java.util.NoSuchElementException;
  * - с аргументом - начальный размер массива
  */
 public class MyArrayList extends List {
-
-    public MyArrayList() {
-
-    }
+    private final int INIT_SIZE = 16;
+    private Object[] array= new Object[INIT_SIZE];
+    private int pointer = 0;
 
     public MyArrayList(int capacity) {
-
+        Object[] array = new Object[capacity];
     }
 
     @Override
     void add(int item) {
+        if (pointer==INIT_SIZE) {
+            Object[] arraynew = new Object[INIT_SIZE+ 1];
+            System.arraycopy(array,0,arraynew,0,pointer);
+
+        }
+
+        array[pointer++] = item;
 
     }
 
     @Override
     int remove(int idx) throws NoSuchElementException {
+        if(idx>size()) throw new NoSuchElementException();
+        for (int i = idx; i<pointer; i++)
+            array[i] = array[i+1];
+        array[pointer] = null;
+        pointer--;
         return 0;
     }
 
     @Override
     int get(int idx) throws NoSuchElementException {
-        return 0;
+        if(idx>size()) throw new NoSuchElementException();
+        int i = (int) array[idx];
+        return i;
     }
 
     @Override
     int size() {
-        return 0;
+        return pointer;
     }
 }
