@@ -14,6 +14,7 @@ public class Encoder {
      * NOTE: Текст преводится в lower case!
      *
      * Если таблица: {a -> x, b -> y}
+     *
      * то текст aB -> xy, AB -> xy, ab -> xy
      *
      * @param cypherTable - таблица подстановки
@@ -25,12 +26,12 @@ public class Encoder {
         StringBuilder result=new StringBuilder();
         for (int j=0;j<temp.length(); j++)
         {
-            if cypherTable.get(charAt(j))!=null)
+            if (cypherTable.get(j)!=null)
             {
                 result.append(cypherTable.get(temp.charAt(j)));
             } else
-            result.append(temp.charAt(i));
+            result.append(temp.charAt(j));
         }
-        return result.toString;
+        return result.toString();
     }
 }
