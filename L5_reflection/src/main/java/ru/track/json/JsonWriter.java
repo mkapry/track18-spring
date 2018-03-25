@@ -60,9 +60,17 @@ public class JsonWriter {
     @NotNull
     private static String toJsonArray(@NotNull Object object) {
         int length = Array.getLength(object);
+        StringBuilder result=new StringBuilder();
+        result.append("[");
         // TODO: implement!
-
-        return null;
+        for (int i=0; i<length-1;i++)
+        {
+            result.append(Array.get(object, i));
+            result.append(",");
+        }
+        result.append(Array.get(object, length));
+        result.append("]");
+        return result.toString();
     }
 
     /**
