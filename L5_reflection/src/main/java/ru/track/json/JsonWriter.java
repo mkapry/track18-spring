@@ -128,8 +128,17 @@ public class JsonWriter {
         Field[] fields = clazz.getDeclaredFields();
         for (Field field : fields) {
             field.setAccessible(true);
+            String name = field.getName();
+            if (field.getAnnotation(SerializedTo.class) != null) {
+                name = field.getAnnotation(SerializedTo.class).value();
+            }
+            if (clazz.getAnnotation(JsonNullable.class) != null) {
+                Object value = field.get(object);
+                jsonObject.put(name, toJson(value));
+            } else {
             if (field.get(object) != null) {
-                jsonObject.put(field.getName(), toJson(field.get(object)));
+                jsonObject.put(name, toJson(field.get(object)));
+            }
             }
         }
         return formatObject(jsonObject);
