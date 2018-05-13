@@ -33,7 +33,7 @@ public class Encoder {
                 Set<Map.Entry<Character, Character>> entrySet = cypherTable.entrySet();
                 for (Map.Entry<Character, Character> pair : entrySet) {
                     if (desiredObject.equals(pair.getValue())) {
-                        result.append(pair.getKey());// нашли наше значение и возвращаем  ключ
+                        result.append(pair.getKey());
                     }
                 }
             }

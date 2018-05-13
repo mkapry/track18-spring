@@ -26,7 +26,7 @@ public class Decoder {
         Iterator<Character> it = domainHist.keySet().iterator();
         Iterator<Character> eit = encryptedDomainHist.keySet().iterator();
         while (eit.hasNext()) {
-            cypher.put(eit.next(), it.next());
+            cypher.put(eit.next(),it.next());
             }
 
     }
@@ -89,6 +89,7 @@ public class Decoder {
         for (Map.Entry<Character, Integer> entry : list) {
             sortedMap.put(entry.getKey(), entry.getValue());
         }
+        System.out.print(sortedMap);
         return sortedMap;
 
     }

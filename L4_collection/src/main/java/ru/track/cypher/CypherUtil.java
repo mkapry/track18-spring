@@ -21,12 +21,8 @@ public class CypherUtil {
     @NotNull
     public static Map<Character, Character> generateCypher() {
         Map cypherTable = new HashMap< Character, Character>();
-        for (int i =0;i<SYMBOLS.length()/2;i++)
-        {
-            Character h = new Character(SYMBOLS.charAt(i));
-            cypherTable.put(SYMBOLS.charAt(SYMBOLS.length()-(i+1)), h);
-        }
-        for (int i= SYMBOLS.length()-1;i>=SYMBOLS.length()/2;i--)
+        int i;
+        for (i =0;i<SYMBOLS.length(); i++)
         {
             Character h = new Character(SYMBOLS.charAt(i));
             cypherTable.put(SYMBOLS.charAt(SYMBOLS.length()-(i+1)), h);
