@@ -11,21 +11,20 @@ import java.util.NoSuchElementException;
  */
 public class MyArrayList extends List {
     private final int INIT_SIZE = 16;
-    private Object[] array= new Object[INIT_SIZE];
+    private Object array [] ;
     private int pointer = 0;
 
-    public MyArrayList(int capacity) {
-        Object[] array = new Object[capacity];
-    }
+    public MyArrayList(int capacity) { array = new Object[capacity]; }
+    public MyArrayList(){ array = new Object[INIT_SIZE];}
 
     @Override
     void add(int item) {
-        if (pointer==INIT_SIZE) {
-            Object[] arraynew = new Object[INIT_SIZE+ 1];
+        if (pointer==size()) {
+            Object[] arraynew = new Object[size()+ 1];
             System.arraycopy(array,0,arraynew,0,pointer);
+            array=arraynew;
 
         }
-
         array[pointer++] = item;
 
     }
@@ -33,9 +32,8 @@ public class MyArrayList extends List {
     @Override
     int remove(int idx) throws NoSuchElementException {
         if(idx>size()) throw new NoSuchElementException();
-        for (int i = idx; i<pointer; i++)
+        for (int i = idx; i<pointer-1; i++)
             array[i] = array[i+1];
-        array[pointer] = null;
         pointer--;
         return 0;
     }
